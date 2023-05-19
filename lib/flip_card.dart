@@ -182,7 +182,7 @@ class FlipCardState extends State<FlipCard>
     controller!.duration = Duration(milliseconds: widget.speed);
 
     final animation = isFront ? controller!.forward() : controller!.reverse();
-    animation.whenComplete(() {
+    await animation.whenComplete(() {
       if (widget.onFlipDone != null) widget.onFlipDone!(isFront);
       if (!mounted) return;
       setState(() => isFront = !isFrontBefore);
